@@ -1,20 +1,38 @@
-//
-//  ViewController.swift
-//  IosCounter
-//
-//  Created by Полина учеба on 7/20/22.
-//
 
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var countLabel: UILabel!
+    
+    var count: Int = 0
+    
+    func setLabel() {
+        countLabel.text = "Значение счётчика: \(String(count))"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hello")
-        // Do any additional setup after loading the view.
+        setLabel()
+        clearButton.isHidden = true
     }
 
-
+    @IBAction func addButtonDidTap(_ sender: Any) {
+        count += 1
+        setLabel()
+        if (count == 1){
+            clearButton.isHidden = false
+            
+        }
+    }
+    
+    @IBAction func clearButtonDidTap(_ sender: Any) {
+        count = 0
+        setLabel()
+        clearButton.isHidden = true
+        
+    }
 }
 
